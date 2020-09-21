@@ -113,7 +113,7 @@ func (k *KeepalivedCollector) Collect(ch chan<- prometheus.Metric) {
 
 	keepalivedStats, err := k.getKeepalivedStats()
 	if err != nil {
-		logrus.WithError(err).Error("No data found to be exported")
+		logrus.WithField("json", k.useJSON).WithError(err).Error("No data found to be exported")
 		keepalivedUp = 0
 	}
 
